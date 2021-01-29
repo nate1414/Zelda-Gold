@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Money</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <h2>Your gold: <input type="text" disabled value="{{request.session.process_money}}"></h2>
+    <div class="buildings">
+        <div>
+            <h1>Farm</h1>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="farm">
+                <button>Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h1>Cave</h1>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="cave">
+                <button>Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h1>House</h1>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="house">
+                <button>Find Gold!</button>
+            </form>
+        </div>
+        <div>
+            <h1>Casino</h1>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="casino">
+                <button>Gamble Gold!</button>
+            </form>
+        </div>
+    </div>
+    <h3>Activities:</h3>
+    <div id="activities">
+        {% for activities in request.session.activities %}
+            <p class="{{activities.result}}">{{activities.message}}</p>
+        {% endfor %}
+    </div>
+    <form action="/reset" method="get">
+        <button>Reset Gold!</button>
+    </form>
+</body>
+</html>
