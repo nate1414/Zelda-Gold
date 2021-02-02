@@ -5,46 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ninja Money</title>
     {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
-<body>
-    <h2>Your gold: <input type="text" disabled value="{{request.session.process_money}}"></h2>
-    <div class="buildings">
-        <div>
-            <h1>Farm</h1>
-            <p>(earns 10-20 golds)</p>
-            <form action="/process_money" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="building" value="farm">
-                <button>Find Gold!</button>
-            </form>
-        </div>
-        <div>
-            <h1>Cave</h1>
-            <p>(earns 5-10 golds)</p>
-            <form action="/process_money" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="building" value="cave">
-                <button>Find Gold!</button>
-            </form>
-        </div>
-        <div>
-            <h1>House</h1>
-            <p>(earns 2-5 golds)</p>
-            <form action="/process_money" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="building" value="house">
-                <button>Find Gold!</button>
-            </form>
-        </div>
-        <div>
-            <h1>Casino</h1>
-            <p>(earns/takes 0-50 golds)</p>
-            <form action="/process_money" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="building" value="casino">
-                <button>Gamble Gold!</button>
-            </form>
+<body class="bg-light">
+    <h2 class="jumbotron display-2">User: Racing for Rupees</h2>
+    <h2>Your Rupees: <input type="text" disabled value="{{request.session.process_money}}"></h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Dungeon 1</h1>
+                <p>(earns 10-20 Rupees)</p>
+                <img src="static/blue_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="dungeon 1">
+                    <button>Find Rupees!</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <h1>Dungeon 2</h1>
+                <p>(earns 5-10 Rupees)</p>
+                <img src="static/orange_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="dungeon 2">
+                    <button>Find Rupees!</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <h1>Dungeon 3</h1>
+                <p>(earns 2-5 Rupees)</p>
+                <img src="static/red_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="dungeon 3">
+                    <button>Find Rupees!</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <h1>Dungeon 4</h1>
+                <p>(earns/takes 0-50 Rupees)</p>
+                <img src="static/silver_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="dungeon 4">
+                    <button>Gamble Rupees!</button>
+                </form>
+            </div>
         </div>
     </div>
     <h3>Activities:</h3>
@@ -54,7 +65,9 @@
         {% endfor %}
     </div>
     <form action="/reset" method="get">
-        <button>Reset Gold!</button>
+        <button>Reset Rupees!</button>
     </form>
 </body>
 </html>
+
+<!-- adding some text here janurary 30th for a test commit, Aaron K -->

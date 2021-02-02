@@ -3,10 +3,10 @@ import random
 from datetime import datetime
 
 Buildings_Map = {
-    'farm': (10,20),
-    'cave': (5,10),
-    'house': (2,5),
-    'casino': (0,50),
+    'dungeon 1': (10,20),
+    'dungeon 2': (5,10),
+    'dungeon 3': (2,5),
+    'dungeon 4': (0,50),
 }
 
 def index(request):
@@ -25,10 +25,10 @@ def process_money(request):
         curr_gold = random.randint(building[0], building[1])
         now_formatted = datetime.now().strftime("%m/%d/%Y %I:%M%p")
         result = 'earn'
-        message = f'({now_formatted}) Earned {curr_gold} golds from the {building_name_upper}!'
+        message = f'({now_formatted}) Earned {curr_gold} rupees from the {building_name_upper}!'
         if building_name == 'casino':
             if random.randint(0,1) > 0:
-                message = f' ({now_formatted}) Entered a {building_name_upper} and lost {curr_gold} golds'
+                message = f' ({now_formatted}) Entered a {building_name_upper} and lost {curr_gold} rupees'
                 curr_gold = curr_gold * -1
                 result = 'lost'
         request.session['process_money'] += curr_gold
