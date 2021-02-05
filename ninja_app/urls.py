@@ -4,6 +4,13 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('process_money', views.process_money),
-    path('reset', views.reset)
+    path('register', views.register),
+    path('login', views.login),
+    path('logout', views.logout),
+    path('game', views.game),
+    path('gold', views.gold),
+    path('reset', views.reset),
+    path('game/edit/<int:id>', views.edit_profile),
+    path('game/edit/<int:id>/update', views.update),
+    path('delete_user', views.delete_user)
 ]
