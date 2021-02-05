@@ -5,7 +5,6 @@ import random
 from datetime import datetime
 
 Buildings_Map = {
-<<<<<<< HEAD
     'dungeon 1': (10,20),
     'dungeon 2': (5,10),
     'dungeon 3': (2,5),
@@ -13,21 +12,7 @@ Buildings_Map = {
 }
 
 def index(request):
-    if not 'process_money' in request.session or 'activities' not in request.session:
-        request.session['process_money'] = random.randint(1, 11)
-
-        request.session['activities'] = []
-    return render(request, 'index.html')
-=======
-    'Shrines': (10,20),
-    'Labyrinths': (5,10),
-    'Hideout': (2,5),
-    'Hyrule Castle': (0,50),
-}
-
-def index(request):
     return render(request, 'Log_Reg.html')
->>>>>>> master
 
 def register(request):
     errors = User.objects.basic_validator(request.POST)
@@ -66,10 +51,9 @@ def game(request):
     if 'user_id' in request.session:
         context = {
             'user': User.objects.get(id=request.session['user_id']),
-            'stats': Stat.objects.all(),
         }
         if not 'gold' in request.session or 'activities' not in request.session:
-            request.session['gold'] = 200
+            request.session['gold'] = random.randint(1, 11)
             request.session['activities'] = []
         return render(request, 'index.html', context)
     return redirect('/')
@@ -84,13 +68,8 @@ def gold(request):
         curr_gold = random.randint(building[0], building[1])
         now_formatted = datetime.now().strftime("%m/%d/%Y %I:%M%p")
         result = 'earn'
-<<<<<<< HEAD
         message = f'({now_formatted}) Earned {curr_gold} rupees from the {building_name_upper}!'
         if building_name == 'dungeon 4':
-=======
-        message = f'({now_formatted}) Earned {curr_gold} golds from the {building_name_upper}!'
-        if building_name == 'Hyrule Castle':
->>>>>>> master
             if random.randint(0,1) > 0:
                 message = f' ({now_formatted}) Entered {building_name_upper} and lost {curr_gold} rupees'
                 curr_gold = curr_gold * -1
