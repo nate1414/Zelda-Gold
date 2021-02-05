@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
-<body class="bg-light">
+<body class="bg-light p-3">
     <div class="container1">
         <div class="row">
             <h2 class="col-sm display-2">User: Racing for Rupees</h2>
@@ -39,20 +39,20 @@
     <h2>Your Rupees: <input type="text" disabled value="{{request.session.process_money}}"></h2>
     <div class="container2">
         <div class="row">
-            <div class="col-sm">
-                <h1>Dungeon 1</h1>
-                <p>(earns 10-20 Rupees)</p>
-                <img src="static/blue_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+            <div class="col-sm border border-success rounded m-2 text-center">
+                <h1 class="text-center">Dungeon 1</h1>
+                <p class="text-center">(earns 10-20 Rupees)</p>
+                <img src="static/blue_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
                 <form action="/process_money" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="building" value="dungeon 1">
                     <button>Find Rupees!</button>
                 </form>
             </div>
-            <div class="col-sm">
-                <h1>Dungeon 2</h1>
-                <p>(earns 5-10 Rupees)</p>
-                <img src="static/orange_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+            <div class="col-sm border border-success rounded m-2 text-center">
+                <h1 class="text-center">Dungeon 2</h1>
+                <p class="text-center">(earns 5-10 Rupees)</p>
+                <img src="static/orange_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
 
                 <form action="/process_money" method="post">
                     {% csrf_token %}
@@ -60,10 +60,10 @@
                     <button>Find Rupees!</button>
                 </form>
             </div>
-            <div class="col-sm">
-                <h1>Dungeon 3</h1>
-                <p>(earns 2-5 Rupees)</p>
-                <img src="static/red_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+            <div class="col-sm border border-success rounded m-2 text-center">
+                <h1 class="text-center">Dungeon 3</h1>
+                <p class="text-center">(earns 2-5 Rupees)</p>
+                <img src="static/red_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
 
                 <form action="/process_money" method="post">
                     {% csrf_token %}
@@ -71,28 +71,30 @@
                     <button>Find Rupees!</button>
                 </form>
             </div>
-            <div class="col-sm">
-                <h1>Dungeon 4</h1>
-                <p>(earns/takes 0-50 Rupees)</p>
-                <img src="static/silver_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail">
+            <div class="col-sm border border-success rounded m-2 text-center">
+                <h1 class="text-center">Dungeon 4</h1>
+                <p class="text-center">(earns/takes 0-50 Rupees)</p>
+                <img src="static/silver_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
 
                 <form action="/process_money" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="building" value="dungeon 4">
-                    <button>Gamble Rupees!</button>
+                    <button class="btn mx-auto text-center">Gamble Rupees!</button>
                 </form>
             </div>
         </div>
     </div>
-    <h3>Activities:</h3>
-    <div id="activities">
+    <div class="row">
+        <h3 class="col-sm d-inline">Activities:</h3>
+        <form class="col-sm d-inline d-flex flex-row-reverse" action="/reset" method="get">
+            <button class="btn btn-warning">Reset Rupees!</button>
+        </form>
+    </div>
+    <div class="bg-secondary" id="activities">
         {% for activities in request.session.activities %}
             <p class="{{activities.result}}">{{activities.message}}</p>
         {% endfor %}
     </div>
-    <form action="/reset" method="get">
-        <button>Reset Rupees!</button>
-    </form>
 </body>
 </html>
 

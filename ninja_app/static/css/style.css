@@ -1,3 +1,29 @@
 p {
     color: blue;
 }
+
+
+/* .textbox {
+    overflow:auto;
+    width:600px;
+    height:200px;
+} */
+
+
+.earn {
+    color: #77fa77;
+}
+.lost {
+    color: #f27a7a;
+}
+
+#activities {
+    height: 9rem;
+    overflow-y: scroll;
+    border: solid;
+    padding: 1rem;
+}
+
+.button-position {
+    position: relative;
+}

@@ -11,7 +11,8 @@ Buildings_Map = {
 
 def index(request):
     if not 'process_money' in request.session or 'activities' not in request.session:
-        request.session['process_money'] = 0
+        request.session['process_money'] = random.randint(1, 11)
+
         request.session['activities'] = []
     return render(request, 'index.html')
 
@@ -26,9 +27,9 @@ def process_money(request):
         now_formatted = datetime.now().strftime("%m/%d/%Y %I:%M%p")
         result = 'earn'
         message = f'({now_formatted}) Earned {curr_gold} rupees from the {building_name_upper}!'
-        if building_name == 'casino':
+        if building_name == 'dungeon 4':
             if random.randint(0,1) > 0:
-                message = f' ({now_formatted}) Entered a {building_name_upper} and lost {curr_gold} rupees'
+                message = f' ({now_formatted}) Entered {building_name_upper} and lost {curr_gold} rupees'
                 curr_gold = curr_gold * -1
                 result = 'lost'
         request.session['process_money'] += curr_gold
