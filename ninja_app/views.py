@@ -62,6 +62,7 @@ def gold(request):
     if request.method == 'GET':
         return redirect('/')
     if request.method == 'POST':
+
         building_name = request.POST['building']
         building = Buildings_Map[building_name]
         building_name_upper = building_name[0].upper() + building_name[1:] 
@@ -76,10 +77,14 @@ def gold(request):
                 result = 'lost'
         request.session['gold'] += curr_gold
         request.session['activities'].append({"message": message, "result": result})
+        if request.session['gold'] > 100:
+            return redirect('/you_won')
+        if request.session['gold'] < 0:
+            return redirect('/you_lost')
         return redirect('/game')
 
 def reset(request):
-    request.session.clear()
+    request.session['gold'] = 10
     return redirect('/game')
 
 def edit_profile(request, id):
@@ -117,4 +122,20 @@ def delete_user(request):
         delete_userprofile = User.objects.all()
         delete_userprofile.delete()
         return redirect('/')
+    return redirect('/')
+
+def you_won(request):
+    if 'user_id' in request.session:
+        context = {
+            'user': User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'you_won.html', context)
+    return redirect('/')
+
+def you_lost(request):
+    if 'user_id' in request.session:
+        context = {
+            'user': User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'you_lost.html', context)
     return redirect('/')
