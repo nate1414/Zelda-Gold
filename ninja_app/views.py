@@ -95,7 +95,8 @@ def update(request, id):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/game')
+        # return redirect('/')
+        return render(request, 'edit_profile.html')
     if 'user_id' in request.session:
         edit_user = User.objects.get(id=id)
         edit_user.first_name = request.POST.get('first_name')

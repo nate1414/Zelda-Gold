@@ -11,7 +11,7 @@
 <body class="bg-light p-3">
     <div class="container1">
         <div class="row">
-            <h2 class="col-sm display-2">User: Racing for Rupees</h2>
+            <h2 class="col-sm display-2">{{ user.username }}: Racing for Rupees</h2>
             <nav class="col-sm navbar navbar-expand-lg navbar-dark bg-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
                             <a class="nav-link" href="/game/edit/{{ user.id }}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@
                 <form action="/gold" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="building" value="dungeon 4">
-                    <button class="btn mx-auto text-center">Gamble Rupees!</button>
+                    <button>Gamble Rupees!</button>
                 </form>
             </div>
         </div>
