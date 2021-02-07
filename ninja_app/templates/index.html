@@ -19,10 +19,10 @@
                 <div class="collapse navbar-collapse nav justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">User Stats</a>
+                            <a class="nav-link" href="/userstats">User Stats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Leader Board</a>
+                            <a class="nav-link" href="/leaderboard">Leader Board</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/game/edit/{{ user.id }}">Profile</a>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-sm border border-success rounded m-2 text-center">
                 <h1 class="text-center">Dungeon 1</h1>
-                <p class="text-center">(earns 10-20 Rupees)</p>
+                <p class="text-center">(earns/takes 10-20 Rupees)</p>
                 <img src="static/blue_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
                 <form action="/gold" method="post">
                     {% csrf_token %}
@@ -51,7 +51,7 @@
             </div>
             <div class="col-sm border border-success rounded m-2 text-center">
                 <h1 class="text-center">Dungeon 2</h1>
-                <p class="text-center">(earns 5-10 Rupees)</p>
+                <p class="text-center">(earns/takes 5-10 Rupees)</p>
                 <img src="static/orange_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
 
                 <form action="/gold" method="post">
@@ -62,7 +62,7 @@
             </div>
             <div class="col-sm border border-success rounded m-2 text-center">
                 <h1 class="text-center">Dungeon 3</h1>
-                <p class="text-center">(earns 2-5 Rupees)</p>
+                <p class="text-center">(earns/takes 2-5 Rupees)</p>
                 <img src="static/red_rupee.png" alt="blue rupee" class="rounded d-block img-thumbnail mx-auto">
 
                 <form action="/gold" method="post">

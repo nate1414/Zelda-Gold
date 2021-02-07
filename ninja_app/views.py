@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
-import random
+import random, bcrypt
 from datetime import datetime
 
 Buildings_Map = {
@@ -70,21 +70,21 @@ def gold(request):
         now_formatted = datetime.now().strftime("%m/%d/%Y %I:%M%p")
         result = 'earn'
         message = f'({now_formatted}) Earned {curr_gold} rupees from the {building_name_upper}!'
-        if building_name == 'dungeon 4':
+        if building_name == 'dungeon 1' or 'dungeon 2' or 'dungeon 3' or 'dungeon 4' :
             if random.randint(0,1) > 0:
                 message = f' ({now_formatted}) Entered {building_name_upper} and lost {curr_gold} rupees'
                 curr_gold = curr_gold * -1
                 result = 'lost'
         request.session['gold'] += curr_gold
         request.session['activities'].append({"message": message, "result": result})
-        if request.session['gold'] > 100:
+        if request.session['gold'] >= 100:
             return redirect('/you_won')
         if request.session['gold'] < 0:
             return redirect('/you_lost')
         return redirect('/game')
 
 def reset(request):
-    request.session['gold'] = 10
+    request.session['gold'] = random.randint(1, 11)
     return redirect('/game')
 
 def edit_profile(request, id):
@@ -126,16 +126,42 @@ def delete_user(request):
 
 def you_won(request):
     if 'user_id' in request.session:
+        user_id = request.session['user_id']
         context = {
-            'user': User.objects.get(id=request.session['user_id']),
+            'user': User.objects.get(id=user_id),
         }
+        wins = User.objects.get(pk=user_id).wins
+        User.objects.add_win(user_id, wins)
         return render(request,'you_won.html', context)
     return redirect('/')
 
 def you_lost(request):
     if 'user_id' in request.session:
+        user_id = request.session['user_id']
         context = {
-            'user': User.objects.get(id=request.session['user_id']),
+            'user': User.objects.get(id=user_id),
         }
+        losses = User.objects.get(pk=user_id).losses
+        User.objects.add_loss(user_id, losses)
         return render(request,'you_lost.html', context)
+    return redirect('/')
+
+def userstats(request):
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
+        context = {
+            'user': User.objects.get(id=user_id),
+            'users': User.objects.all()
+        }
+        return render(request,'userstats.html', context)
+    return redirect('/')
+
+def leaderboard(request):
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
+        context = {
+            'user': User.objects.get(id=user_id),
+            'users': User.objects.all()
+        }
+        return render(request,'leaderboard.html', context)
     return redirect('/')

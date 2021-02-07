@@ -36,6 +36,12 @@ class UserManager(models.Manager):
                 errors['username'] = "Username and password do not match."
         return errors
 
+    def add_win(self, user_id, wins):
+        return self.filter(pk=user_id).update(wins=wins+1)
+
+    def add_loss(self, user_id, losses):
+        return self.filter(pk=user_id).update(losses=losses+1)
+
 class User(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -44,6 +50,8 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    wins = models.IntegerField(default=0)
+    losses = models.IntegerField(default=0)
     objects = UserManager()
 
     def full_name(self):

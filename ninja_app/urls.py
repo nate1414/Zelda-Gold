@@ -15,4 +15,6 @@ urlpatterns = [
     path('delete_user', views.delete_user),
     path('you_won', views.you_won),
     path('you_lost', views.you_lost),
+    path('userstats', views.userstats),
+    path('leaderboard', views.leaderboard),
 ]

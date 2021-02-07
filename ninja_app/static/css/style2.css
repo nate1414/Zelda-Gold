@@ -54,7 +54,7 @@ h1 {
     margin: 10px;
     align-items: center;
     text-align: right;
-    width: 332px;
+    width: 302px;
 }
 
 .box1 > form > p > input{
@@ -73,14 +73,15 @@ h1 {
 .submit1 {
     display: inline;
     float: right;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .cancel1 {
     display: inline-block;
-    width: 80px;
+    width: 85px;
     background-color: lightgreen;
     border: 1px solid black;
+    margin-top: 10px;
 }
 
 .cancel1 > a {
@@ -90,7 +91,7 @@ h1 {
 
 .box2 > h2 {
     margin: 5px;
-    margin-left: 125px;
+    margin-left: 118px;
     margin-right: 125px;
     padding: 10px;
     background-color: lightgreen;
