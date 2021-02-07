@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <title>Login/Registration</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body class="bg-light p-3">
+    <div class="container1">
+        <div class="row">
+            <h2 class="col-sm display-2">Racing for Rupees</h2>
+            <nav class="col-sm navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userstats">User Stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/leaderboard">Leader Board</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/game/edit/{{ user.id }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        
+        </div>
+    </div>
+    {% if messages %}
+    <div id='errors'>
+        {% for message in messages %}
+            <p>- {{message}} -</p>
+        {% endfor %}
+    </div>    
+    {% endif %}
+    <div id="wrapper">
+        <div class="box1">
+            <h1>Updating your profile</h1>
+            <form action="/game/edit/{{user.id}}/update" method="POST">
+                {% csrf_token %}
+                <p>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name">
+                </p>
+                <p>
+                    <label for="first_name">Last Name: </label>
+                    <input type="text" name="last_name">
+                </p>
+                <p>
+                    <label for="first_name">Username: </label>
+                    <input type="text" name="username">
+                </p>
+                <p>
+                    <label for="first_name">Email: </label>
+                    <input type="text" name="email">
+                </p>
+                <p>
+                    <label for="first_name">Password: </label>
+                    <input type="password" name="password">
+                </p>
+                <p>
+                    <label for="first_name">Confirm PW: </label>
+                    <input type="password" name="confirm_password">
+                </p>
+                <div class="submit1">
+                    <input type="submit" name="Edit">
+                </div>
+            </form>
+            <div class="cancel1">
+                <a href="/game">Cancel</a>
+            </div>
+        </div>
+        <div class="box2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Triforce.svg" alt="zelda_logo">
+            <h2><a href="/delete_user">Delete User</a></h2>
+        </div>
+    </div>
+</body>
+</html>

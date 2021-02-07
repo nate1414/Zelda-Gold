@@ -1,0 +1,110 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    margin: 20px;
+    padding: 10px;
+}
+
+#container {
+    margin: 0px 0px 10px 40px;
+}
+
+#container > #errors > p{
+    padding: 5px;
+}
+
+#topbox {
+    display: flex;
+    justify-content: left;
+}
+
+#topbox > a {
+    margin: 20px;
+    padding: 20px;
+}
+
+#wrapper {
+    width: 1000px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 10px;
+    padding: 10px;
+}
+
+.box1 {
+    width: 400px;
+    display: inline-block;
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+
+.box1 > h1 {
+    width: 332px;
+    text-align: center;
+    margin: 10px;
+    padding: 0px;
+}
+
+.box1 > form > p {
+    display: inline-block;
+    margin: 10px;
+    align-items: center;
+    text-align: right;
+    width: 302px;
+}
+
+.box1 > form > p > input{
+    align-self: center;
+    display: inline-block;
+    width: 200px;
+}
+
+.box1 > form > .button1 {
+    margin: 10px;
+    position: relative;
+    right: -250px;
+    padding: 3px;
+}
+
+.submit1 {
+    display: inline;
+    float: right;
+    margin-top: 10px;
+}
+
+.cancel1 {
+    display: inline-block;
+    width: 85px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.cancel1 > a {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.box2 > h2 {
+    margin: 5px;
+    margin-left: 118px;
+    margin-right: 125px;
+    padding: 10px;
+    background-color: lightgreen;
+    border: 1px solid black;
+}
+
+.box2 > h2 > a {
+    text-decoration: none;
+}
+
+.box2 > img {
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+    margin-left: 55px;
+}
